@@ -1,11 +1,28 @@
 import React from 'react';
 import { StatusBar, TouchableHighlight, View } from 'react-native';
 import { StackNavigator } from 'react-navigation';
-import { getRandomContacts } from '../api/uinames';
-import styles from '../styles/styles';
 import Spinner from 'react-native-loading-spinner-overlay';
 
-import { Container, List, ListItem, Toast, Thumbnail, Header, Title, Left, Icon, Right, Button, Body, Content,Text, Card, CardItem } from 'native-base';
+import { getRandomContacts } from '../api/uinames';
+import styles from '../styles/styles';
+
+import {
+  Container,
+  List,
+  ListItem,
+  Toast,
+  Thumbnail,
+  Header,
+  Title,
+  Left,
+  Right,
+  Body,
+  Content,
+  Text,
+  Card,
+  CardItem
+} from 'native-base';
+
 export default class Contacts extends React.Component {
  constructor(props) {
    super(props);

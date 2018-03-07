@@ -3,15 +3,18 @@ import { AppRegistry, Alert, View } from 'react-native';
 import { Container, Header, Left, Body, Title, Card, CardItem, Content, Right, Icon, Button, Text } from "native-base";
 import { Image } from 'react-native';
 import { DrawerNavigator } from 'react-navigation';
-import { getRandomContacts } from '../api/uinames';
-import styles from '../styles/styles';
 import call from 'react-native-phone-call'
 import CreditCard from 'react-native-credit-card';
+
+import { getRandomContacts } from '../api/uinames';
+import styles from '../styles/styles';
 
 export default class ContactProfile extends React.Component {
 
   constructor(props) {
     super(props);
+    // Not the IDEAL way
+    // To support Random Profile from SideBar
     this.info = props.info || props.navigation.state.params.info
   }
 
@@ -131,18 +134,3 @@ export default class ContactProfile extends React.Component {
     );
   }
 }
-ContactProfile.navigationOptions = ({ navigation }) => ({
-  header: (
-    <Header>
-      <Left>
-        <Button transparent onPress={() => navigation.navigate('Home')}>
-          <Icon name="menu" />
-        </Button>
-      </Left>
-      <Body>
-        <Title>Profile</Title>
-      </Body>
-      <Right />
-    </Header>
-  )
-});

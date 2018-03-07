@@ -2,10 +2,11 @@ import React from 'react';
 import Spinner from 'react-native-loading-spinner-overlay';
 import { DrawerNavigator } from 'react-navigation';
 import { View } from 'react-native';
+import { Header, Left, Body, Title, Right, Button, Text, Icon } from 'native-base';
+
 import styles from '../styles/styles';
 import ContactProfile from './ContactProfile';
 import { getRandomContacts } from '../api/uinames';
-import { Header, Left, Body, Title, Right, Button, Text, Icon } from "native-base";
 
 
 export default class RandomContactProfile extends React.Component {
