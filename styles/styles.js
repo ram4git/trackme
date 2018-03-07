@@ -16,7 +16,12 @@ const styles = StyleSheet.create({
     fontSize: 34,
     textAlign: 'center',
     fontWeight: 'bold',
-    padding: 0
+    padding: 0,
+    color: '#3742fa'
+  },
+
+  cardTop: {
+    backgroundColor: '#f1f2f6'
   },
 
   centeredDiv: {
@@ -55,6 +60,21 @@ const styles = StyleSheet.create({
 
   noMargin: {
     maxWidth: 80
+  },
+
+  sideBar: {
+    backgroundColor: '#ecf0f1'
+  },
+
+  sideBarItem: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#16a085'
+  },
+
+  sideBarLogo: {
+    height: 120,
+    width: 120
   }
 
 });
