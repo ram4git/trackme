@@ -112,6 +112,9 @@ export default class ContactProfile extends React.Component {
    renderCreditCard() {
      const { name, surname, credit_card } = this.state.info;
      const { number, expiration, pin, security } = credit_card;
+     const fixedExpiration = expiration.length === 5 ? expiration : `0${expiration}`;
+     const fixedNumber = number.split('-').join('');
+
 
      return (
        <Card>
@@ -121,9 +124,11 @@ export default class ContactProfile extends React.Component {
             type={'visa'}
             shiny={false}
             bar={false}
-            number={number}
+            number={fixedNumber}
             name={name}
-            expiry={expiration}
+            bar={true}
+            shiny={true}
+            expiry={fixedExpiration}
             cvc={pin} />
            </Body>
          </CardItem>
