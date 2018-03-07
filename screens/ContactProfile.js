@@ -1,48 +1,27 @@
-import React from "react";
-import { AppRegistry, Alert } from "react-native";
-import { Container, Header, Left, Body, Spinner, Title, Card, CardItem, Content, Right, Icon, Button, Text } from "native-base";
+import React from 'react';
+import { AppRegistry, Alert, View } from 'react-native';
+import { Container, Header, Left, Body, Title, Card, CardItem, Content, Right, Icon, Button, Text } from "native-base";
 import { Image } from 'react-native';
-import { StackNavigator } from "react-navigation";
+import { DrawerNavigator } from 'react-navigation';
 import { getRandomContacts } from '../api/uinames';
 import styles from '../styles/styles';
 import call from 'react-native-phone-call'
 import CreditCard from 'react-native-credit-card';
 
-
-
 export default class ContactProfile extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      isLoading: true
-    };
+    this.info = props.info || props.navigation.state.params.info
   }
-
-   componentDidMount() {
-     getRandomContacts(1)
-       .then( response => {
-         this.setState({
-           info: response,
-           isLoading: false
-         });
-       })
-       .catch(error => {
-         this.setState({
-           errorMsg: error,
-           isLoading: false
-         })
-       });
-
-   }
 
    renderHeader() {
      return (
        <Header>
        <Left>
          <Button transparent
-         onPress={() => this.props.navigation.navigate('Home')}>
-           <Icon name='arrow-back' />
+            onPress={() => this.props.navigation.navigate('Home')}>
+            <Icon name='arrow-back' />
          </Button>
        </Left>
          <Body>
@@ -67,11 +46,11 @@ export default class ContactProfile extends React.Component {
    }
 
    renderImageCardWithNameAndMobile() {
-     const { name, surname, phone, photo, title } = this.state.info;
+     const { name, surname, phone, photo, title } = this.info;
 
      return (
        <Card>
-         <CardItem>
+         <CardItem style={styles.cardTop}>
            <Body style={styles.centeredDiv}>
              <Text>{title}</Text>
              <Text style={styles.name}>{`${name} ${surname}`}</Text>
@@ -95,22 +74,22 @@ export default class ContactProfile extends React.Component {
 
 
    renderBirthday() {
-     const { birthday } = this.state.info;
+     const { birthday } = this.info;
      return this.renderTextCard(birthday.dmy, 'BIRTHDAY');
    }
 
    renderAge() {
-     const { age } = this.state.info;
+     const { age } = this.info;
      return this.renderTextCard(age, 'AGE');
    }
 
    renderRegion() {
-     const { region } = this.state.info;
+     const { region } = this.info;
      return this.renderTextCard(region, 'FROM');
    }
 
    renderCreditCard() {
-     const { name, surname, credit_card } = this.state.info;
+     const { name, surname, credit_card } = this.info;
      const { number, expiration, pin, security } = credit_card;
      const fixedExpiration = expiration.length === 5 ? expiration : `0${expiration}`;
      const fixedNumber = number.split('-').join('');
@@ -137,15 +116,9 @@ export default class ContactProfile extends React.Component {
 
    }
 
-
   render() {
-    console.log('INFO=', this.state.info);
-    if(this.state.isLoading) {
-      return <Spinner />;
-    }
-
     return (
-      <Container>
+      <Container style={styles.contactContainer}>
         <Content padder>
           { this.renderHeader() }
           { this.renderImageCardWithNameAndMobile() }
@@ -162,7 +135,7 @@ ContactProfile.navigationOptions = ({ navigation }) => ({
   header: (
     <Header>
       <Left>
-        <Button transparent onPress={() => navigation.navigate('Contacts')}>
+        <Button transparent onPress={() => navigation.navigate('Home')}>
           <Icon name="menu" />
         </Button>
       </Left>

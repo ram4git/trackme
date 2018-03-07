@@ -1,9 +1,11 @@
 import React from 'react';
-import { StatusBar } from 'react-native';
+import { StatusBar, TouchableHighlight, View } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import { getRandomContacts } from '../api/uinames';
 import styles from '../styles/styles';
-import { Container, List, ListItem, Thumbnail, Header, Title, Left, Icon, Right, Button, Body, Content,Text, Card, CardItem, Spinner } from 'native-base';
+import Spinner from 'react-native-loading-spinner-overlay';
+
+import { Container, List, ListItem, Toast, Thumbnail, Header, Title, Left, Icon, Right, Button, Body, Content,Text, Card, CardItem } from 'native-base';
 export default class Contacts extends React.Component {
  constructor(props) {
    super(props);
@@ -40,16 +42,28 @@ export default class Contacts extends React.Component {
     );
   }
 
+  onCardSelect(cardInfo) {
+    this.props.navigation.navigate('Profile', {info: cardInfo});
+  }
+
   renderContacts() {
     const { isLoading, contacts=[] } = this.state;
     if(isLoading) {
-      return <Spinner />;
+      return (
+        <View style={styles.spinner}>
+          <Spinner visible={this.state.isLoading}
+            size='large'
+            animation='fade'
+            color='#00b894'/>
+        </View>
+      );
     }
     const contactsList = []
     contacts.forEach( contact => {
       const { name, surname, phone, photo } = contact;
       contactsList.push(
-        <Card key={phone}>
+        <Card key={phone} >
+        <TouchableHighlight onPress={this.onCardSelect.bind(this, contact)}>
           <CardItem avatar style={styles.contactCard}>
             <Left style={styles.noMargin}>
               <Thumbnail
@@ -60,6 +74,7 @@ export default class Contacts extends React.Component {
               <Text style={styles.contactNumber}>{phone}</Text>
             </Body>
           </CardItem>
+          </TouchableHighlight>
         </Card>
       );
     });
@@ -76,12 +91,7 @@ export default class Contacts extends React.Component {
       <Container style={styles.contactContainer}>
         { this.renderHeader() }
         <Content padder>
-        { this.renderContacts() }
-        <Button full rounded primary
-          style={{ marginTop: 10 }}
-          onPress={() => this.props.navigation.navigate('Profile')}>
-          <Text>Profile Page</Text>
-        </Button>
+          { this.renderContacts() }
         </Content>
       </Container>
     );

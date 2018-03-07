@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
-  container: {
+  mainContainer: {
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
@@ -64,6 +64,10 @@ const styles = StyleSheet.create({
 
   sideBar: {
     backgroundColor: '#ecf0f1'
+  },
+
+  spinner: {
+    flex: 1
   },
 
   sideBarItem: {
