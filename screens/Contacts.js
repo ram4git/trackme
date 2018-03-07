@@ -2,6 +2,7 @@ import React from 'react';
 import { StatusBar } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import { getRandomContacts } from '../api/uinames';
+import styles from '../styles/styles';
 import { Container, List, ListItem, Thumbnail, Header, Title, Left, Icon, Right, Button, Body, Content,Text, Card, CardItem, Spinner } from 'native-base';
 export default class Contacts extends React.Component {
  constructor(props) {
@@ -48,16 +49,18 @@ export default class Contacts extends React.Component {
     contacts.forEach( contact => {
       const { name, surname, phone, photo } = contact;
       contactsList.push(
-        <ListItem avatar key={phone}>
-          <Left>
-            <Thumbnail
-            source={{ uri: `${photo}`}} />
-          </Left>
-          <Body>
-            <Text>{`${name} ${surname}`}</Text>
-            <Text note>{phone}</Text>
-          </Body>
-        </ListItem>
+        <Card key={phone}>
+          <CardItem avatar style={styles.contactCard}>
+            <Left style={styles.noMargin}>
+              <Thumbnail
+              source={{ uri: `${photo}`}} />
+            </Left>
+            <Body>
+              <Text style={styles.contactName}>{`${name} ${surname}`}</Text>
+              <Text style={styles.contactNumber}>{phone}</Text>
+            </Body>
+          </CardItem>
+        </Card>
       );
     });
     return (
@@ -70,7 +73,7 @@ export default class Contacts extends React.Component {
 
   render() {
     return (
-      <Container>
+      <Container style={styles.contactContainer}>
         { this.renderHeader() }
         <Content padder>
         { this.renderContacts() }

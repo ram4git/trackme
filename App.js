@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { StyleSheet, Text, View } from 'react-native';
 import Expo from "expo";
-import HomeScreen from "./screens/index.js";
+import HomeScreen from "./Router";
 export default class App extends Component {
   constructor() {
     super();

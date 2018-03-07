@@ -8,6 +8,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 
+  contactContainer: {
+    backgroundColor: '#f9f9f9'
+  },
+
   name: {
     fontSize: 34,
     textAlign: 'center',
@@ -27,6 +31,17 @@ const styles = StyleSheet.create({
     color: '#34495e'
   },
 
+  contactName: {
+    fontSize: 20,
+    color: '#3742fa',
+    fontWeight: 'bold'
+  },
+
+  contactNumber: {
+    fontSize: 20,
+    color: '#34495e'
+  },
+
   bigText: {
     fontSize: 24,
     fontWeight: 'bold',
@@ -36,6 +51,10 @@ const styles = StyleSheet.create({
   smallText: {
     fontSize: 12,
     color: '#e74c3c'
+  },
+
+  noMargin: {
+    maxWidth: 80
   }
 
 });

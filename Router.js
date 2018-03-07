@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import Contacts from "./Contacts";
-import ContactProfile from "./ContactProfile";
-import SideBar from "./SideBar";
+import Contacts from "./screens/Contacts";
+import ContactProfile from "./screens/ContactProfile";
+import SideBar from "./screens/SideBar";
 import { DrawerNavigator } from "react-navigation";
 const HomeScreenRouter = DrawerNavigator(
   {

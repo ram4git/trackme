@@ -118,7 +118,7 @@ export default class ContactProfile extends React.Component {
          <CardItem>
            <Body style={styles.centeredDiv}>
            <CreditCard
-            type={'amex'}
+            type={'visa'}
             shiny={false}
             bar={false}
             number={number}
