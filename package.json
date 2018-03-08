@@ -23,7 +23,7 @@
     "expo": "^25.0.0",
     "native-base": "^2.3.9",
     "react": "16.2.0",
-    "react-native": "0.52.0",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-25.0.0.tar.gz",
     "react-native-credit-card": "^0.1.9",
     "react-native-loading-spinner-overlay": "^0.5.2",
     "react-native-phone-call": "^1.0.4",

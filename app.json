@@ -1,5 +1,18 @@
 {
   "expo": {
-    "sdkVersion": "25.0.0"
+    "sdkVersion": "25.0.0",
+    "name": "Your App Name",
+    "icon": "./img/sunrise.png",
+    "version": "1.0.0",
+    "slug": "your-app-slug",
+    "ios": {
+      "bundleIdentifier": "com.techmdemo.contacts"
+    },
+    "android": {
+      "package": "com.techmdemo.contacts"
+    },
+    "packagerOpts": {
+      "nonPersistent": "--nonPersistent"
+    }
   }
 }
