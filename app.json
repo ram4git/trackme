@@ -1,8 +1,8 @@
 {
   "expo": {
     "sdkVersion": "25.0.0",
-    "name": "Your App Name",
-    "icon": "./img/sunrise.png",
+    "name": "TechMDemo",
+    "icon": "./img/sunrise2.png",
     "version": "1.0.0",
     "slug": "your-app-slug",
     "ios": {
@@ -12,7 +12,7 @@
       "package": "com.techmdemo.contacts"
     },
     "packagerOpts": {
-      "nonPersistent": "--nonPersistent"
+      "nonPersistent": true
     }
   }
 }

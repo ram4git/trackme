@@ -1,9 +1,7 @@
 import React from 'react';
 import { StatusBar, TouchableHighlight, View } from 'react-native';
-import { StackNavigator } from 'react-navigation';
 import Spinner from 'react-native-loading-spinner-overlay';
 
-import { getRandomContacts } from '../api/uinames';
 import styles from '../styles/styles';
 
 import {
@@ -24,28 +22,6 @@ import {
 } from 'native-base';
 
 export default class Contacts extends React.Component {
- constructor(props) {
-   super(props);
-   this.state = {
-     isLoading: true
-   };
- }
-
-  componentDidMount() {
-    getRandomContacts(10)
-      .then( response => {
-        this.setState({
-          contacts: response,
-          isLoading: false
-        });
-      })
-      .catch(error => {
-        this.setState({
-          errorMsg: error,
-          isLoading: false
-        })
-      });
-  }
 
   renderHeader() {
     return (
@@ -64,17 +40,9 @@ export default class Contacts extends React.Component {
   }
 
   renderContacts() {
-    const { isLoading, contacts=[] } = this.state;
-    if(isLoading) {
-      return (
-        <View style={styles.spinner}>
-          <Spinner visible={this.state.isLoading}
-            size='large'
-            animation='fade'
-            color='#00b894'/>
-        </View>
-      );
-    }
+
+    const { screenProps:contacts } = this.props;
+
     const contactsList = []
     contacts.forEach( contact => {
       const { name, surname, phone, photo } = contact;
