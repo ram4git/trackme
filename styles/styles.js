@@ -62,6 +62,10 @@ const styles = StyleSheet.create({
     maxWidth: 80
   },
 
+  smallIcon: {
+    maxWidth: 20
+  },
+
   sideBar: {
     backgroundColor: '#ecf0f1'
   },

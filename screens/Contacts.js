@@ -18,6 +18,7 @@ import {
   Content,
   Text,
   Card,
+  Icon,
   CardItem
 } from 'native-base';
 
@@ -58,6 +59,9 @@ export default class Contacts extends React.Component {
               <Text style={styles.contactName}>{`${name} ${surname}`}</Text>
               <Text style={styles.contactNumber}>{phone}</Text>
             </Body>
+            <Right style={styles.smallIcon}>
+              <Icon name='arrow-forward' />
+            </Right>
           </CardItem>
           </TouchableHighlight>
         </Card>
