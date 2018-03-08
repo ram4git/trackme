@@ -76,6 +76,7 @@ export default class Contacts extends React.Component {
 
 
   render() {
+
     return (
       <Container style={styles.contactContainer}>
         { this.renderHeader() }

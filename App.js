@@ -5,6 +5,7 @@ import Spinner from 'react-native-loading-spinner-overlay';
 
 import { getRandomContacts } from './api/uinames';
 import HomeScreen from './Router';
+import ErrorPage from './screens/Error';
 import styles from './styles/styles';
 
 export default class App extends Component {
@@ -25,6 +26,7 @@ export default class App extends Component {
         });
       })
       .catch(error => {
+        console.log(JSON.stringify(error, null, 2))
         this.setState({
           errorMsg: error,
           isLoading: false
@@ -32,8 +34,14 @@ export default class App extends Component {
       });
   }
 
+  onUserRefreshRequest() {
+    this.setState({
+      randomKey: Math.floor((Math.random() * 1000) + 1)
+    })
+  }
+
   render() {
-    const { isLoading, contacts=[] } = this.state;
+    const { isLoading, contacts=[], errorMsg } = this.state;
     if(isLoading) {
       return (
         <View style={styles.spinner}>
@@ -44,6 +52,17 @@ export default class App extends Component {
         </View>
       );
     }
-    return <HomeScreen  style={styles.mainContainer} screenProps={this.state.contacts} />;
+
+    if(errorMsg) {
+      return (
+        <ErrorPage
+          errorCode='Error'
+          errorMsg={JSON.stringify(errorMsg, null, 2)}
+          onRefreshRequest={ this.onUserRefreshRequest.bind(this) }
+        />
+      );
+    }
+
+    return <HomeScreen  style={styles.mainContainer} screenProps={contacts} />;
   }
 }

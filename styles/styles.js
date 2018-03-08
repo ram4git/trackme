@@ -83,6 +83,27 @@ const styles = StyleSheet.create({
   sideBarLogo: {
     height: 120,
     width: 120
+  },
+
+  error: {
+    backgroundColor: '#c0392b',
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+
+  erroContainer: {
+    marginTop: 120
+  },
+
+  errorHeader: {
+    fontSize: 28,
+    fontWeight: 'bold',
+    color: '#f39c12'
+  },
+
+  errorMsg: {
+    fontSize: 20
   }
 
 });

@@ -13,7 +13,7 @@ const HomeScreenRouter = DrawerNavigator(
     RandomProfile: { screen: RandomProfile }
   },
   {
-    contentComponent: props => <SideBar {...props} />
+    contentComponent: props => <SideBar {...props} />,
   }
 );
 export default HomeScreenRouter;
