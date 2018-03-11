@@ -9,7 +9,7 @@ import CreditCard from 'react-native-credit-card';
 import { getRandomContacts } from '../api/uinames';
 import styles from '../styles/styles';
 
-export default class ContactProfile extends React.Component {
+export default class RequestDetails extends React.Component {
 
   constructor(props) {
     super(props);
@@ -28,7 +28,7 @@ export default class ContactProfile extends React.Component {
          </Button>
        </Left>
          <Body>
-           <Title>CONTACT INFO</Title>
+           <Title>REQUEST DETAILS</Title>
          </Body>
          <Right />
        </Header>

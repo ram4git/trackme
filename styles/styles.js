@@ -6,6 +6,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+    marginTop: 10
   },
 
   contactContainer: {
@@ -79,6 +80,14 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#16a085'
   },
+  
+  sideBarTitle: {
+    fontSize: 28,
+    fontWeight: 'bold',
+    color: '#2c3e50',
+    padding: -20
+  },
+
 
   sideBarLogo: {
     height: 120,
@@ -104,7 +113,25 @@ const styles = StyleSheet.create({
 
   errorMsg: {
     fontSize: 20
+  },
+  
+  sideBarImage: {
+    height: 120,
+    alignSelf: 'stretch',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  
+  centerText: {
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  
+  mainContent: {
+    marginLeft: 20,
+    marginRight: 20
   }
+  
 
 });
 

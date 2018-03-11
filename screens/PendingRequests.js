@@ -1,7 +1,7 @@
 import React from 'react';
 import { StatusBar, TouchableHighlight, View } from 'react-native';
 import Spinner from 'react-native-loading-spinner-overlay';
-
+import { SearchBar } from 'react-native-elements'
 import styles from '../styles/styles';
 
 import {
@@ -19,25 +19,29 @@ import {
   Text,
   Card,
   Icon,
-  CardItem
+  CardItem,
+  Item,
+  Input,
+  Button
 } from 'native-base';
 
-export default class Contacts extends React.Component {
+export default class PendingRequests extends React.Component {
 
   renderHeader() {
     return (
-      <Header>
-        <Left/>
-        <Body>
-          <Title>CONTACTS</Title>
-        </Body>
-        <Right />
+      <Header searchBar rounded>
+        <Item>
+          <Input placeholder="Search" />
+        </Item>
+        <Button transparent>
+          <Icon name="ios-search" />
+        </Button>
       </Header>
     );
   }
 
   onCardSelect(cardInfo) {
-    this.props.navigation.navigate('Profile', {info: cardInfo});
+    this.props.navigation.navigate('RequestDetails', {info: cardInfo});
   }
 
   renderContacts() {

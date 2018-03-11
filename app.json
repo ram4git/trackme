@@ -1,18 +1,8 @@
 {
   "expo": {
     "sdkVersion": "25.0.0",
-    "name": "TechMDemo",
+    "name": "LalithaDemo",
     "icon": "./img/sunrise2.png",
-    "version": "1.0.0",
-    "slug": "your-app-slug",
-    "ios": {
-      "bundleIdentifier": "com.techmdemo.contacts"
-    },
-    "android": {
-      "package": "com.techmdemo.contacts"
-    },
-    "packagerOpts": {
-      "nonPersistent": true
-    }
+    "version": "1.0.0"
   }
 }

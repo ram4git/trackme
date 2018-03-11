@@ -1,6 +1,6 @@
 import React from 'react';
-import { AppRegistry, Image, StatusBar } from 'react-native';
-import { Container, Content, Text, List, ListItem  } from 'native-base';
+import { AppRegistry, Image, StatusBar, ImageBackground } from 'react-native';
+import { Container, Content, Text, List, ListItem, Card, CardItem, Body  } from 'native-base';
 import { DrawerNavigator } from 'react-navigation';
 
 import styles from '../styles/styles';
@@ -8,11 +8,23 @@ import styles from '../styles/styles';
 const routes = [
   {
     screen: 'Home',
-    title: 'All Contacts'
+    title: 'Home'
   },
   {
-    screen: 'RandomProfile',
-    title: 'Random Contact'
+    screen: 'PendingRequests',
+    title: 'Pending Requests'
+  },
+  {
+    screen: 'PendingRequests',
+    title: 'Search'
+  },
+  {
+    screen: 'About',
+    title: 'About'
+  },
+  {
+    screen: 'Feedback',
+    title: 'Feedback'
   }
 ];
 
@@ -21,7 +33,16 @@ export default class SideBar extends React.Component {
     return (
       <Container style={styles.mainContainer}>
         <Content>
-          <Image source={require('../img/sunrise.png')} style={styles.sideBarLogo}/>
+          <ImageBackground
+            style={styles.sideBarImage}
+            source={require('../img/background.jpg')}>
+          <Image
+            square
+            style={{ height: 80, width: 70 }}
+            source={require('../img/logo.png')}
+          />
+            <Text style={styles.sideBarTitle}>LALITHA INDUSTRIES</Text>
+          </ImageBackground>
           <List
             dataArray={routes}
             renderRow={data => {
