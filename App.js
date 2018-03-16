@@ -7,6 +7,8 @@ import { getRandomContacts } from './api/uinames';
 import HomeScreen from './Router';
 import ErrorPage from './screens/Error';
 import styles from './styles/styles';
+import { Provider } from 'react-redux';
+import store from './store';
 
 export default class App extends Component {
 
@@ -44,25 +46,33 @@ export default class App extends Component {
     const { isLoading, contacts=[], errorMsg } = this.state;
     if(isLoading) {
       return (
+          <Provider store={store}>
         <View style={styles.spinner}>
           <Spinner visible={this.state.isLoading}
             size='large'
             animation='fade'
             color='#00b894'/>
         </View>
+          </Provider>
       );
     }
 
     if(errorMsg) {
       return (
+          <Provider store={store}>
         <ErrorPage
           errorCode='Error'
           errorMsg={JSON.stringify(errorMsg, null, 2)}
           onRefreshRequest={ this.onUserRefreshRequest.bind(this) }
         />
+          </Provider>
       );
     }
 
-    return <HomeScreen  style={styles.mainContainer} screenProps={contacts} />;
+    return (
+      <Provider store={store}>
+        <HomeScreen  style={styles.mainContainer} screenProps={contacts} />
+      </Provider>
+    )
   }
 }
