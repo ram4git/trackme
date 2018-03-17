@@ -44,14 +44,16 @@ export default class PendingRequests extends React.Component {
     this.props.navigation.navigate('RequestDetails', {info: cardInfo});
   }
 
-  renderContacts() {
+  renderCases() {
 
-    const { screenProps:contacts } = this.props;
+    const { screenProps:cases } = this.props;
 
-    const contactsList = []
-    contacts.forEach( contact => {
+    //cases fetch from firebase
+
+    const casesList = []
+    cases.forEach( contact => {
       const { name, surname, phone, photo } = contact;
-      contactsList.push(
+      casesList.push(
         <Card key={phone} >
         <TouchableHighlight onPress={this.onCardSelect.bind(this, contact)}>
           <CardItem avatar style={styles.contactCard}>
@@ -73,7 +75,7 @@ export default class PendingRequests extends React.Component {
     });
     return (
       <List>
-        {contactsList}
+        {casesList}
       </List>
     );
   }
@@ -85,7 +87,7 @@ export default class PendingRequests extends React.Component {
       <Container style={styles.contactContainer}>
         { this.renderHeader() }
         <Content padder>
-          { this.renderContacts() }
+          { this.renderCases() }
         </Content>
       </Container>
     );

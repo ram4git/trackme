@@ -1,6 +1,7 @@
 import {
     CONSTANT1,
-    UPDATEDATA
+    UPDATEDATA,
+    ALLLIVECASES
 } from "./../constants/constant";
 
 export const action1 = (data) => {
@@ -20,4 +21,11 @@ export const updateData = (data) => {
         type : UPDATEDATA,
         data
     }
+}
+
+export const getAllLiveCases = (data) => {
+  return {
+    type : ALLLIVECASES,
+    data : data
+  }
 }

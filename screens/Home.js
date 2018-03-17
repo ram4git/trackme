@@ -2,37 +2,11 @@
 import styles from '../styles/styles';
 import { Text, Container, Header, Content, Button, Body, Title, Icon } from 'native-base';
 import { Badge } from 'react-native-elements';
-
-/*export default class Home extends React.Component {
-
-  render() {
-    return (
-      <Container>
-        <Header>
-          <Body>
-            <Title>DASHBOARD</Title>
-          </Body>
-        </Header>
-        <Content style={styles.mainContent}>
-          <Text>You have 3 pending requests</Text>
-          <Button block>
-            <Icon name='md-add' />
-            <Text>Create New Request</Text>
-          </Button>
-        </Content>
-      </Container>
-    )
-  }
-
-}*/
-
-
-
 import React, { Component } from 'react';
 import {bindActionCreators} from 'redux';
 import { connect } from 'react-redux';
 import {
-    action1
+    action1, getAllLiveCases
 } from "./../action/action";
 /*import {
     Modal,
@@ -46,7 +20,7 @@ import {
 } from 'react-native';*/
 
 
-const Component1 = (props) => {
+const homeComponent = (props) => {
     return (
         <Container>
             <Header>
@@ -56,14 +30,14 @@ const Component1 = (props) => {
             </Header>
             <Content style={styles.mainContent}>
                 <Text>You have 3 pending requests</Text>
-                <Button onPress={props.action1} block>
-                    <Icon name='md-add' />
-                    <Text>From Redux { props.number }</Text>
+                <Button onPress={props.getAllLiveCases} block>
+                <Icon name='md-add' />
+                <Text>From Redux { props.liveCasesCount }</Text>
                 </Button>
-                {
-                    props.updatedData.map((item, index) =>
+                  {
+                    props.allLiveCases.map((item, index) =>
                         <Text>{item}</Text>
-                    )
+                  )
                 }
             </Content>
         </Container>
@@ -72,16 +46,15 @@ const Component1 = (props) => {
 
 function mapStateToProps(state, props) {
     return {
-        number: state.reducer1.thisIsDefault,
-        updatedData : state.reducer1.dataFromApi
+        liveCasesCount: state.homeReducer.liveCasesCount,
+        allLiveCases : state.homeReducer.allLiveCases
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return bindActionCreators({
-        action1
+        getAllLiveCases
     }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Component1);
-
+export default connect(mapStateToProps, mapDispatchToProps)(homeComponent);
