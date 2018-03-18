@@ -44,8 +44,8 @@ function* getAllLiveCases(){
             authorization : credentials.signInReducer.token,
             centerId : credentials.signInReducer.centerId
         };*/
-        let response = yield call( getRandomContacts, "This is API"); // Here headers is optional
-        console.log("response", response);
+        // let response = yield call( getRandomContacts, "This is API"); // Here headers is optional
+        // console.log("response", response);
 
         let response = [ "11MAR7-MK1234-12", "11MAR7-MK1234-13", "11MAR7-MK2345-12" ];
         yield put(openCasesList(response));
