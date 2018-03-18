@@ -23,6 +23,7 @@ import {
 const homeComponent = (props) => {
 
   //we should make a call to get all opencases everytime user lands on home page
+  if(props.openCases == null || props.openCases.length === 0)
    props.getAllOpenCases();
 
     return (
