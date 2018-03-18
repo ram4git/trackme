@@ -12,11 +12,11 @@ import {
     fetchData
 } from "../utils/utils";
 import {
-    updateData
+    openCasesList
 } from "./../action/action"
 
 import {
-    CONSTANT1
+    GETALLOPENCASES
 } from "./../constants/constant"
 import {getRandomContacts} from "../api/uinames";
 
@@ -36,9 +36,27 @@ function* fetchGymData(){
     }
 }
 
+function* getAllLiveCases(){
+    try {
+        let credentials = yield select();
+
+        /*let headers = {
+            authorization : credentials.signInReducer.token,
+            centerId : credentials.signInReducer.centerId
+        };*/
+        let response = yield call( getRandomContacts, "This is API"); // Here headers is optional
+        console.log("response", response);
+
+        let response = [ "11MAR7-MK1234-12", "11MAR7-MK1234-13", "11MAR7-MK2345-12" ];
+        yield put(openCasesList(response));
+    } catch (e) {
+        yield put({type: "USER_FETCH_FAILED", message: e.message});
+    }
+}
+
+
 const mySaga = [
-    takeLatest( CONSTANT1 , fetchGymData)
+    takeLatest(GETALLOPENCASES, getAllLiveCases )
 ];
 
 export default mySaga;
-

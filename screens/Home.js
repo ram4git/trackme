@@ -6,7 +6,7 @@ import React, { Component } from 'react';
 import {bindActionCreators} from 'redux';
 import { connect } from 'react-redux';
 import {
-    action1, getAllLiveCases
+     getAllOpenCases
 } from "./../action/action";
 /*import {
     Modal,
@@ -21,6 +21,10 @@ import {
 
 
 const homeComponent = (props) => {
+
+  //we should make a call to get all opencases everytime user lands on home page
+   props.getAllOpenCases();
+
     return (
         <Container>
             <Header>
@@ -30,12 +34,12 @@ const homeComponent = (props) => {
             </Header>
             <Content style={styles.mainContent}>
                 <Text>You have 3 pending requests</Text>
-                <Button onPress={props.getAllLiveCases} block>
+                <Button onPress={props.getAllOpenCases} block>
                 <Icon name='md-add' />
-                <Text>From Redux { props.liveCasesCount }</Text>
+                <Text>From Redux { props.openCasesCount }</Text>
                 </Button>
                   {
-                    props.allLiveCases.map((item, index) =>
+                    props.openCases.map((item, index) =>
                         <Text>{item}</Text>
                   )
                 }
@@ -46,14 +50,14 @@ const homeComponent = (props) => {
 
 function mapStateToProps(state, props) {
     return {
-        liveCasesCount: state.homeReducer.liveCasesCount,
-        allLiveCases : state.homeReducer.allLiveCases
+        openCasesCount: state.homeReducer.openCasesCount,
+        openCases : state.homeReducer.openCases
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return bindActionCreators({
-        getAllLiveCases
+        getAllOpenCases
     }, dispatch);
 }
 

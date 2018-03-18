@@ -1,3 +1,2 @@
-export const CONSTANT1 = "constant1";
-export const UPDATEDATA = "updateData";
-export const ALLLIVECASES = "allLiveCases";
+export const OPENCASESLIST = "openCasesList";
+export const GETALLOPENCASES = "getAllOpenCases";
