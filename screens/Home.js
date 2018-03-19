@@ -1,6 +1,5 @@
 /*import React from 'react';*/
 import styles from '../styles/styles';
-import { Text, Container, Header, Content, Button, Body, Title, Icon } from 'native-base';
 import { Badge } from 'react-native-elements';
 import React, { Component } from 'react';
 import {bindActionCreators} from 'redux';
@@ -8,6 +7,30 @@ import { connect } from 'react-redux';
 import {
      getAllOpenCases
 } from "./../action/action";
+import { StatusBar, TouchableHighlight, View } from 'react-native';
+import Spinner from 'react-native-loading-spinner-overlay';
+import { SearchBar } from 'react-native-elements'
+
+import {
+  Container,
+  List,
+  ListItem,
+  Toast,
+  Thumbnail,
+  Header,
+  Title,
+  Left,
+  Right,
+  Body,
+  Content,
+  Text,
+  Card,
+  Icon,
+  CardItem,
+  Item,
+  Input,
+  Button
+} from 'native-base';
 /*import {
     Modal,
     Text,
@@ -19,6 +42,9 @@ import {
     TouchableOpacity
 } from 'react-native';*/
 
+const   onCardSelect = (cardInfo) => {
+
+}
 
 const homeComponent = (props) => {
 
@@ -34,14 +60,30 @@ const homeComponent = (props) => {
                 </Body>
             </Header>
             <Content style={styles.mainContent}>
-                <Text>You have 3 pending requests</Text>
+                <Text>You have 3 requests that needs your action</Text>
                 <Button onPress={props.getAllOpenCases} block>
                 <Icon name='md-add' />
-                <Text>From Redux { props.openCasesCount }</Text>
+                <Text>Open a case</Text>
                 </Button>
                   {
                     props.openCases.map((item, index) =>
-                        <Text>{item}</Text>
+                    <Card key={item} >
+                    <TouchableHighlight>
+                      <CardItem avatar style={styles.contactCard}>
+                        <Left style={styles.noMargin}>
+                          <Thumbnail
+                          />
+                        </Left>
+                        <Body>
+                          <Text style={styles.contactName}>{item}</Text>
+                          <Text style={styles.contactNumber}>{item}</Text>
+                        </Body>
+                        <Right style={styles.smallIcon}>
+                          <Icon name='arrow-forward' />
+                        </Right>
+                      </CardItem>
+                      </TouchableHighlight>
+                    </Card>
                   )
                 }
             </Content>
