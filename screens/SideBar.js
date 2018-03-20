@@ -12,7 +12,7 @@ const routes = [
   },
   {
     screen: 'PendingRequests',
-    title: 'Pending Requests'
+    title: 'My Requests'
   },
   {
     screen: 'PendingRequests',
@@ -41,7 +41,7 @@ export default class SideBar extends React.Component {
             style={{ height: 80, width: 70 }}
             source={require('../img/logo.png')}
           />
-            <Text style={styles.sideBarTitle}>LALITHA INDUSTRIES</Text>
+            <Text style={styles.sideBarTitle}>Track ME</Text>
           </ImageBackground>
           <List
             dataArray={routes}

@@ -3,7 +3,6 @@ import FireBaseTools from './firebase-tools'
 
 
 export function getStoreCases() {
-  console.log('-------------R A K E S H--------------------')
-  const dbRef = firebase.database().ref().child('roles/store/liveCases');
-  return dbRef.once('value');
+  const dbRef = firebase.database().ref().child('roles/store/openCases');
+  return dbRef.once('value').then(snap => snap.val());
 }

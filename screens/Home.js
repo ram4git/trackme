@@ -46,11 +46,19 @@ const   onCardSelect = (cardInfo) => {
 
 }
 
+
+
 const homeComponent = (props) => {
 
   //we should make a call to get all opencases everytime user lands on home page
-  if(props.openCases == null || props.openCases.length === 0)
-   props.getAllOpenCases();
+  console.log(props.openCases);
+  console.log('000000000000000000');
+
+    console.log(Object.keys(props.openCases));
+
+
+  if(props.openCases == null || Object.keys(props.openCases).length === 0)
+    props.getAllOpenCases();
 
     return (
         <Container>
@@ -67,16 +75,16 @@ const homeComponent = (props) => {
                 </Button>
                   {
                     props.openCases.map((item, index) =>
-                    <Card key={item} >
+                    <Card key={item.id} >
                     <TouchableHighlight>
                       <CardItem avatar style={styles.contactCard}>
                         <Left style={styles.noMargin}>
-                          <Thumbnail
+                          <Thumbnail source={{uri : item.thumbNail}}
                           />
                         </Left>
                         <Body>
-                          <Text style={styles.contactName}>{item}</Text>
-                          <Text style={styles.contactNumber}>{item}</Text>
+                          <Text style={styles.contactName}>{item.name}</Text>
+                          <Text style={styles.contactNumber}>{item.id}</Text>
                         </Body>
                         <Right style={styles.smallIcon}>
                           <Icon name='arrow-forward' />
@@ -84,8 +92,8 @@ const homeComponent = (props) => {
                       </CardItem>
                       </TouchableHighlight>
                     </Card>
-                  )
-                }
+                    )
+                  }
             </Content>
         </Container>
     )

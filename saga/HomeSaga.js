@@ -39,12 +39,8 @@ function* fetchGymData(){
 
 function* getAllLiveCases(){
     try {
-      // let response = yield call(getStoreCases); // Here headers is optional
-      // console.log(response);
-      // CHECK WITH HIMANSHU
-      console.log('--------- G O T ----------');
-      let response = [ "11MAR7-MK1234-12", "11MAR7-MK1234-13", "11MAR7-MK2345-12" ]
-        yield put(openCasesList(response));
+      let response = yield call(getStoreCases);
+      yield put(openCasesList(response));
     } catch (e) {
         yield put({type: "USER_FETCH_FAILED", message: e.message});
     }
